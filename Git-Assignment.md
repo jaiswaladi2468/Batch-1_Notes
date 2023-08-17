@@ -1,7 +1,7 @@
 **Git Assignment: Version Control and Collaboration**
 
 **Task 1: Set Up Your Repository**
-1. Create a new repository on GitHub. Name it "GitAssignment".
+1. Create a new repository on GitHub. Name it "Git_Assignment".
 2. Clone the repository to your local machine.
 
 **Task 2: Initial Commit and Push**
