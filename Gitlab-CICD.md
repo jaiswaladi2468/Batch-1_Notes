@@ -124,5 +124,50 @@ gitlab-runner run
 
 Remember that self-hosted runners require maintenance and monitoring to ensure their availability and security. Always keep the runner software updated and ensure that the machine hosting the runner is properly maintained.
 
-For more detailed instructions and troubleshooting, refer to GitLab's official documentation on setting up self-hosted runners: https://docs.gitlab.com/runner/register/index.html
+## Sample Pipeline
+
+
+```yaml
+stages:
+  - compile
+  - test
+  - build
+  - deploy
+
+compile-job:
+  tags:
+    - linux
+  stage: compile
+  script:
+    - echo "Compiling the code..."
+    - mvn compile
+
+unit-test-job:
+  tags:
+    - linux
+  stage: test
+  script:
+    - echo "Running unit tests... This will take about 60 seconds."
+    - mvn test
+
+build-job:
+  tags:
+    - linux
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - mvn install
+  artifacts:
+    paths:
+      - target/*
+
+deploy-job:
+  tags:
+    - linux
+  stage: deploy
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
+```
 
