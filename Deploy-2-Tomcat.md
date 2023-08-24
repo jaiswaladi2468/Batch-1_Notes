@@ -30,6 +30,8 @@ In summary, Apache Tomcat is a popular Java-based web server and servlet contain
 
 ### EASY METHOD 
 --> wget https://get.jenkins.io/war-stable/2.414.1/jenkins.war
+
+
 --> java -jar jenkins.war --httpPort=8082
 
 ## Setup Tomcat9
