@@ -94,7 +94,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/jaiswaladi2468/TC.git'
+                git branch: 'main', url: 'https://github.com/your_repo.git'
             }
         }
 
