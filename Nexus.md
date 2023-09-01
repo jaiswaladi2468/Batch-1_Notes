@@ -1,8 +1,6 @@
 # STEPS
 
-I had trouble accessing your link so I'm going to try to continue without it.
 
-Here's the converted text in Markdown format:
 
 ```markdown
 # NEXUS3 INSTALLATION
