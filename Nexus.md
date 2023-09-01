@@ -5,7 +5,6 @@
 ```markdown
 # NEXUS3 INSTALLATION
 
-```bash
 sudo apt install openjdk-8-jdk -y
 
 cd /opt
