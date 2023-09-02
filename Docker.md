@@ -191,3 +191,275 @@ docker pull nginx:latest
 This command downloads the Nginx image from Docker Hub, making it available for you to run as a container.
 
 These examples cover the basics of Docker. Docker is a powerful tool that simplifies application deployment and management, especially in a containerized and microservices architecture. It allows you to package applications and their dependencies, ensuring consistency and ease of deployment across different environments.
+
+
+
+# Top 50 Docker commands, grouped by their primary functions:
+
+### Managing Containers:
+
+1. **Run a Container**:
+   ```
+   docker run [OPTIONS] IMAGE [COMMAND] [ARGS]
+   ```
+
+2. **List Running Containers**:
+   ```
+   docker ps
+   ```
+
+3. **List All Containers** (including stopped ones):
+   ```
+   docker ps -a
+   ```
+
+4. **Start a Stopped Container**:
+   ```
+   docker start CONTAINER_ID
+   ```
+
+5. **Stop a Running Container**:
+   ```
+   docker stop CONTAINER_ID
+   ```
+
+6. **Restart a Container**:
+   ```
+   docker restart CONTAINER_ID
+   ```
+
+7. **Remove a Container** (stop and delete):
+   ```
+   docker rm CONTAINER_ID
+   ```
+
+8. **Execute a Command in a Running Container**:
+   ```
+   docker exec [OPTIONS] CONTAINER_ID|NAME [COMMAND] [ARGS]
+   ```
+
+9. **Inspect Container Details**:
+   ```
+   docker inspect CONTAINER_ID
+   ```
+
+10. **Attach to a Running Container's STDIN, STDOUT, and STDERR**:
+    ```
+    docker attach CONTAINER_ID
+    ```
+
+### Managing Images:
+
+11. **List Docker Images**:
+    ```
+    docker images
+    ```
+
+12. **Pull an Image from a Registry**:
+    ```
+    docker pull IMAGE_NAME[:TAG]
+    ```
+
+13. **Build an Image from a Dockerfile**:
+    ```
+    docker build [OPTIONS] PATH_TO_DOCKERFILE
+    ```
+
+14. **Tag an Image**:
+    ```
+    docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+    ```
+
+15. **Remove an Image**:
+    ```
+    docker rmi IMAGE_ID
+    ```
+
+16. **Search for Images on Docker Hub**:
+    ```
+    docker search IMAGE_NAME
+    ```
+
+17. **Save an Image to a Tarball File**:
+    ```
+    docker save -o OUTPUT_FILE.tar IMAGE_NAME[:TAG]
+    ```
+
+18. **Load an Image from a Tarball File**:
+    ```
+    docker load -i INPUT_FILE.tar
+    ```
+
+### Managing Docker Volumes:
+
+19. **List Docker Volumes**:
+    ```
+    docker volume ls
+    ```
+
+20. **Create a Docker Volume**:
+    ```
+    docker volume create VOLUME_NAME
+    ```
+
+21. **Inspect a Docker Volume**:
+    ```
+    docker volume inspect VOLUME_NAME
+    ```
+
+22. **Remove a Docker Volume**:
+    ```
+    docker volume rm VOLUME_NAME
+    ```
+
+### Managing Networks:
+
+23. **List Docker Networks**:
+    ```
+    docker network ls
+    ```
+
+24. **Create a Docker Network**:
+    ```
+    docker network create NETWORK_NAME
+    ```
+
+25. **Inspect a Docker Network**:
+    ```
+    docker network inspect NETWORK_NAME
+    ```
+
+26. **Remove a Docker Network**:
+    ```
+    docker network rm NETWORK_NAME
+    ```
+
+### Managing Docker Compose:
+
+27. **Start Docker Compose Services**:
+    ```
+    docker-compose up [OPTIONS] [SERVICE...]
+    ```
+
+28. **Stop Docker Compose Services**:
+    ```
+    docker-compose down [OPTIONS]
+    ```
+
+29. **Build or Rebuild Docker Compose Services**:
+    ```
+    docker-compose build [SERVICE...]
+    ```
+
+30. **View Docker Compose Logs**:
+    ```
+    docker-compose logs [SERVICE...]
+    ```
+
+### Docker Registry and Authentication:
+
+31. **Login to a Docker Registry**:
+    ```
+    docker login [OPTIONS] [SERVER]
+    ```
+
+32. **Logout from a Docker Registry**:
+    ```
+    docker logout [SERVER]
+    ```
+
+### Miscellaneous Commands:
+
+33. **View Docker Version Info**:
+    ```
+    docker version
+    ```
+
+34. **Check Docker System Information**:
+    ```
+    docker info
+    ```
+
+35. **Display Docker Disk Usage**:
+    ```
+    docker system df
+    ```
+
+36. **Monitor Docker Events**:
+    ```
+    docker events [OPTIONS]
+    ```
+
+37. **Pull and Apply Updates to Docker Swarm Services**:
+    ```
+    docker service update [OPTIONS] SERVICE
+    ```
+
+38. **Clean Up Unused Resources (Containers, Images, Volumes, Networks)**:
+    ```
+    docker system prune
+    ```
+
+39. **Pause a Running Container**:
+    ```
+    docker pause CONTAINER_ID
+    ```
+
+40. **Unpause a Paused Container**:
+    ```
+    docker unpause CONTAINER_ID
+    ```
+
+41. **Inspect Docker Daemon Logs**:
+    ```
+    docker logs docker
+    ```
+
+### Docker Swarm (Container Orchestration):
+
+42. **Initialize a Docker Swarm**:
+    ```
+    docker swarm init [OPTIONS]
+    ```
+
+43. **Join a Node to a Docker Swarm**:
+    ```
+    docker swarm join [OPTIONS] HOST:PORT
+    ```
+
+44. **List Nodes in a Docker Swarm**:
+    ```
+    docker node ls
+    ```
+
+45. **Create a Docker Service**:
+    ```
+    docker service create [OPTIONS] IMAGE [COMMAND] [ARGS]
+    ```
+
+46. **List Docker Services**:
+    ```
+    docker service ls
+    ```
+
+47. **Scale a Docker Service**:
+    ```
+    docker service scale SERVICE=REPLICAS
+    ```
+
+48. **Inspect a Docker Service**:
+    ```
+    docker service inspect SERVICE
+    ```
+
+49. **Remove a Docker Service**:
+    ```
+    docker service rm SERVICE
+    ```
+
+50. **Leave a Docker Swarm (Node)**:
+    ```
+    docker swarm leave [OPTIONS]
+    ```
+
+These are some of the most commonly used Docker commands for managing containers, images, volumes, networks, and Docker Swarm. Depending on your specific use case, you may need to use additional commands and options to tailor Docker to your needs.
