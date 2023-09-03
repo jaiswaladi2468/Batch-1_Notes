@@ -256,7 +256,7 @@ This Docker Compose file defines two services, `mongodb` and `mongo-express`, ju
 and run `docker-compose up -d` to start the services.
 
 
-## Prcatice Repo
+## Practice Repo
 
 https://github.com/DanielMichalski/responsive-personal-website
 
