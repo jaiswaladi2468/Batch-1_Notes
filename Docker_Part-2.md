@@ -56,7 +56,49 @@ Docker provides a flexible networking system that allows containers to communica
    docker network rm my_custom_network
    ```
 
+   
 These are some common Docker networking commands and examples. Docker provides various network drivers, such as bridge, host, overlay, and macvlan, which offer different networking capabilities. Choose the appropriate network driver based on your use case and requirements.
+
+
+Docker provides various types of networks and network drivers to enable different network configurations and communication patterns for containers. Here are some of the most commonly used Docker network types and their associated network drivers:
+
+1. **Bridge Network (bridge):**
+   - **Description:** The default network mode for Docker containers when no network is specified. It creates an internal private network on the host, and containers can communicate with each other using container names.
+   - **Use Cases:** Suitable for most containerized applications where containers need to communicate on the same host.
+
+2. **Host Network (host):**
+   - **Description:** Containers share the host network stack, making them directly accessible from the host and other containers without any network address translation (NAT).
+   - **Use Cases:** High-performance scenarios where containers need to bind to specific host ports, but it lacks network isolation.
+
+3. **Overlay Network (overlay):**
+   - **Description:** Used in Docker Swarm mode to facilitate communication between containers running on different nodes in a swarm cluster. It uses VXLAN encapsulation for inter-node communication.
+   - **Use Cases:** Multi-host, multi-container applications orchestrated with Docker Swarm.
+
+4. **Macvlan Network (macvlan):**
+   - **Description:** Allows containers to have their own MAC addresses and appear as separate devices on the host network. Each container has a unique network identity.
+   - **Use Cases:** When containers need to be directly on an external network, e.g., connecting containers to physical networks or VLANs.
+
+5. **None Network (none):**
+   - **Description:** Containers on this network have no network connectivity. It's often used for isolated testing or when the container only needs loopback connectivity.
+   - **Use Cases:** Limited use cases, primarily for debugging or security purposes.
+
+6. **Custom Bridge Network (user-defined bridge):**
+   - **Description:** Users can create their custom bridge networks to have better control over container connectivity, DNS resolution, and isolation.
+   - **Use Cases:** Isolating containers, customizing DNS settings, or when you need multiple bridge networks on the same host.
+
+7. **Overlay2 Network (overlay2):**
+   - **Description:** Introduced in Docker 20.10, the Overlay2 network driver is optimized for container-to-container communication within the same network namespace.
+   - **Use Cases:** High-performance communication between containers on the same host, especially when using the Overlay2 storage driver.
+
+8. **Cilium Network (cilium):**
+   - **Description:** Cilium is an open-source networking and security project that offers advanced networking features, including API-aware network security and load balancing.
+   - **Use Cases:** Advanced networking and security requirements, often in Kubernetes environments.
+
+9. **Gossip Network (gossip):**
+   - **Description:** Used in Docker Swarm mode to enable gossip-based cluster management for container orchestration and service discovery.
+   - **Use Cases:** Docker Swarm cluster communication and coordination.
+
+These network types and drivers provide flexibility and cater to different use cases and requirements in containerized applications. Choosing the right network type and driver depends on your application's architecture, networking needs, and deployment environment.
 
 # Docker-Compose
 
@@ -210,4 +252,11 @@ networks:
     name: mongo-network
 ```
 
-This Docker Compose file defines two services, `mongodb` and `mongo-express`, just like your original Docker commands. It also specifies the necessary environment variables, ports, and network configurations. To use it, create a `docker-compose.yml` file in your project directory and run `docker-compose up -d` to start the services.
+This Docker Compose file defines two services, `mongodb` and `mongo-express`, just like your original Docker commands. It also specifies the necessary environment variables, ports, and network configurations. To use it, create a `docker-compose.yml` file in your project directory 
+and run `docker-compose up -d` to start the services.
+
+
+## Prcatice Repo
+
+https://github.com/DanielMichalski/responsive-personal-website
+
