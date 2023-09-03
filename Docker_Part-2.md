@@ -150,7 +150,7 @@ These are some of the basic Docker Compose commands and examples to get you star
 
 ## SAMPLE
 
-```markdown
+
 ```bash
 # Start MongoDB container
 docker run -d \
@@ -171,7 +171,7 @@ docker run -d \
 --net mongo-network \
 mongo-express
 ```
-```
+
 
 
 ### Here's the equivalent Docker Compose file for your setup
