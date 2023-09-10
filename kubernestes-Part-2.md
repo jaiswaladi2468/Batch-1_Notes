@@ -242,3 +242,18 @@ These YAML configuration are Kubernetes manifest file that defines various resou
    - It exposes port 8081, which is likely the port used for accessing the "mongo-express" web interface. The `nodePort` is set to 30000, indicating that it will be exposed on this port on the cluster nodes.
 
 In summary, this YAML configuration sets up a Kubernetes cluster with a MongoDB database and a web-based MongoDB management tool (mongo-express). It uses ConfigMaps and Secrets to manage configuration and sensitive data and defines Services to allow external access to the MongoDB and mongo-express components.
+
+## Different types of Kubernetes services:
+
+1. **ClusterIP**:
+   - **Description**: ClusterIP is the default type of service. It exposes the service on an internal IP within the cluster. This means that the service is only reachable from within the cluster and is not accessible from outside the cluster.
+   - **Use Cases**: ClusterIP is often used for services that need to communicate with other services within the cluster, but do not need to be accessed from outside the cluster. For example, a database service that other services in the cluster need to connect to.
+
+2. **NodePort**:
+   - **Description**: NodePort exposes the service on a specific port on each node in the cluster. This means that the service is accessible via `<NodeIP>:<NodePort>`. Kubernetes automatically routes traffic that is sent to this port to one of the service's pods.
+   - **Use Cases**: NodePort is useful when you need to expose a service to the outside world. It's typically used in development or testing environments. It's not generally used in production as it exposes the service on all nodes, which might not be desirable.
+
+3. **LoadBalancer**:
+   - **Description**: LoadBalancer provides external access to the service by setting up a load balancer that distributes traffic across all the pods in the service. The external load balancer is provisioned by the cloud provider (like AWS, GCP, Azure) and it assigns a public IP address to the service.
+   - **Use Cases**: LoadBalancer is used when you want to expose a service to the internet. This is typically used in production environments where you want to ensure high availability and distribute incoming traffic across multiple pods.
+
