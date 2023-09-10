@@ -203,7 +203,7 @@ spec:
       targetPort: 8081
       nodePort: 30000
 ```
-```
+
 
 These YAML configuration are Kubernetes manifest file that defines various resources for deploying a MongoDB database and a web-based MongoDB management tool called "mongo-express." Let's break down the different sections and resources defined in this configuration:
 
