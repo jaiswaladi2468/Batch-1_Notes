@@ -100,4 +100,78 @@ spec:
   type: NodePort
 ```
 
+# Liveness & Readiness Probe
 
+Liveness and readiness probes are crucial for Kubernetes to ensure the health and availability of your application. Here's a detailed explanation with examples:
+
+## Liveness Probe:
+
+A liveness probe determines if a container is still running and healthy. If the liveness probe fails, Kubernetes will restart the container.
+
+### Example:
+
+Let's say you have a web server container running on port 80. You can set up an HTTP liveness probe to check if the server is responsive:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: my-web-server-image
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 15
+      periodSeconds: 10
+```
+
+In this example:
+
+- `httpGet`: Specifies that the probe should perform an HTTP GET request.
+- `path`: The path of the request (in this case, `/` means the root path).
+- `port`: The port to use for the request (in this case, 80).
+- `initialDelaySeconds`: The number of seconds after the container has started before the first probe is performed.
+- `periodSeconds`: How often (in seconds) to perform the probe.
+
+## Readiness Probe:
+
+A readiness probe determines if a container is ready to start accepting traffic. If the readiness probe fails, the container won't receive traffic from the service, but it will not be restarted.
+
+### Example:
+
+Suppose your application requires some time to warm up before it can handle requests. You can set up a readiness probe like this:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: my-web-server-image
+    ports:
+    - containerPort: 80
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 3
+```
+
+In this example:
+
+- `httpGet`: Specifies that the probe should perform an HTTP GET request.
+- `path`: The path of the request (in this case, `/ready`).
+- `port`: The port to use for the request (in this case, 80).
+- `initialDelaySeconds`: The number of seconds after the container has started before the first probe is performed.
+- `periodSeconds`: How often (in seconds) to perform the probe.
+
+Using these probes, you can ensure that your application is always responsive and ready to handle traffic, and Kubernetes will take care of restarting or routing traffic accordingly.
