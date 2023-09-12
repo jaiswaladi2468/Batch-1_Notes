@@ -53,7 +53,9 @@ There are three taint effects:
 
 # EXAMPLE
 
-To convert the given YAML to Markdown (MD) format, you can represent it in a code block. Here's the YAML content converted to MD:
+Tainting a Node:
+kubectl taint nodes <nodename> key=value:effect
+kubectl taint nodes ip-172-31-36-109 app=backend:NoSchedule
 
 
 ```yaml
