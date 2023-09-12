@@ -50,3 +50,52 @@ There are three taint effects:
 2. **PreferNoSchedule**: The scheduler will try to avoid placing the pod on the tainted node, but it's not an absolute restriction.
 3. **NoExecute**: If a pod is already running on a node when it gets tainted with `NoExecute`, the pod will be evicted from the node.
 
+
+# EXAMPLE
+
+To convert the given YAML to Markdown (MD) format, you can represent it in a code block. Here's the YAML content converted to MD:
+
+
+```yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-k8s-deployment
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-k8s
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: spring-boot-k8s
+    spec:
+      containers:
+        - name: spring-boot-k8s
+          image: adijaiswal/shopping-cart:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8070
+      tolerations:
+        - key: app
+          operator: Equal
+          value: backend
+          effect: NoSchedule
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-k8ssvc
+spec:
+  selector:
+    app: spring-boot-k8s
+  ports:
+    - protocol: TCP
+      port: 8070
+      targetPort: 8070
+  type: NodePort
+```
+
+
