@@ -94,6 +94,19 @@ chmod 600 ~/.ssh/authorized_keys
 
 You have now installed Ansible on your control node and set up SSH key-based authentication between the control node and managed nodes. This allows Ansible to communicate securely without the need for passwords.
 
+#### step 7: Add IP in /etc/hosts file
+
+```bash
+vi /etc/ansible/hosts
+
+[server-1]
+IP1 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
+IP2 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
+
+[server-2]
+IP3 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
+IP4 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
+```
 
 
 ### Ansible ad-hoc commands that you can use for various tasks:
