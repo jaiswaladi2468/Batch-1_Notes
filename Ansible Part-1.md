@@ -99,7 +99,7 @@ You have now installed Ansible on your control node and set up SSH key-based aut
 ```bash
 vi /etc/ansible/hosts
 
-[wwebservers]
+[webservers]
 IP1 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
 IP2 ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_user=root
 
