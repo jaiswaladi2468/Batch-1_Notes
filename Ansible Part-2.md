@@ -144,3 +144,92 @@ You can run this playbook using the `ansible-playbook` command, specifying the p
 ```bash
 ansible-playbook your_playbook.yml
 ```
+
+
+## Simple Build & Deploy Playbook
+
+``` yaml
+
+---
+- name: webserver configuration
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Maven
+      apt:
+        name: maven
+        state: present
+    - name: Copy the Application to webserver
+      synchronize:
+        src: /home/ubuntu/BoardgameListingWebApp
+        dest: /home/ubuntu/
+
+- name: Build & Deploy
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Build the Application
+      shell: |
+        cd /home/ubuntu/BoardgameListingWebApp
+        mvn package
+    - name: Deploy The Application
+      shell: |
+        cd /home/ubuntu/BoardgameListingWebApp/target
+        nohup java -jar *.jar &
+
+```
+
+This Ansible playbook is designed to configure and deploy a web application on a group of hosts labeled as `webservers`. It consists of two plays:
+
+#### Play 1: Webserver Configuration
+- **Name**: "webserver configuration" is a label that describes the purpose of this play.
+- **Hosts**: This play targets hosts belonging to the group `webservers`.
+- **Become**: It's set to `yes`, indicating that the tasks will be executed with escalated privileges.
+
+##### Tasks:
+1. **Task 1**: "update package cache"
+   - **Module**: `apt`
+   - **Module Options**:
+     - `update_cache: yes`: This instructs `apt` to update the package cache.
+
+2. **Task 2**: "Install Maven"
+   - **Module**: `apt`
+   - **Module Options**:
+     - `name: maven`: Specifies the name of the package to install.
+     - `state: present`: Ensures that the package is present (installed).
+
+3. **Task 3**: "Copy the Application to webserver"
+   - **Module**: `synchronize`
+   - **Module Options**:
+     - `src`: Specifies the source directory (`/home/ubuntu/BoardgameListingWebApp`) on the control machine.
+     - `dest`: Specifies the destination directory (`/home/ubuntu/`) on the target host.
+
+#### Play 2: Build & Deploy
+- **Name**: "Build & Deploy"
+- **Hosts**: This play targets hosts belonging to the group `webservers`.
+- **Become**: It's set to `yes`, indicating that the tasks will be executed with escalated privileges.
+
+##### Tasks:
+1. **Task 4**: "Build the Application"
+   - **Module**: `shell`
+   - **Task Description**: This task navigates to the application directory, `/home/ubuntu/BoardgameListingWebApp`, and runs the Maven command `mvn package` to build the application.
+
+2. **Task 5**: "Deploy The Application"
+   - **Module**: `shell`
+   - **Task Description**: This task navigates to the target directory, `/home/ubuntu/BoardgameListingWebApp/target`, and runs the command `nohup java -jar *.jar &` to execute the application in the background.
+
+**Explanation**:
+
+- This playbook automates the deployment process of a web application.
+- The first play sets up the necessary environment on the target servers by updating the package cache, installing Maven, and copying the application files to the server.
+- The second play focuses on building and deploying the application. It uses shell commands to navigate to the application directory, build it using Maven, and then deploy it using `java -jar`.
+
+You can run this playbook using the `ansible-playbook` command, specifying the playbook file's location:
+
+```bash
+ansible-playbook your_playbook.yml
+```
