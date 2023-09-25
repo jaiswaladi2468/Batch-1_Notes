@@ -1,6 +1,9 @@
 # Script
 
----
+Sure! Here is your Ansible playbook converted to Markdown (md) format:
+
+
+```yaml
 - name: Install java and net-tools
   hosts: servers
   tasks:
@@ -38,7 +41,6 @@
     - name: Rename nexus folder
       command: mv /opt/nexus-3.60.0-02 /opt/nexus
       when: not stat_result.stat.exists
-
 
 - name: Create nexus user to own nexus folders
   hosts: servers
@@ -78,10 +80,11 @@
         line: run_as_user="nexus"
     - name: Start nexus
       command: /opt/nexus/bin/nexus start
+```
 
+# Verify Nexus
 
-# verify Part I m troubleshooting, till above
-
+```yaml
 - name: Verify Nexus
   hosts: servers
   tasks:
@@ -96,3 +99,7 @@
       ansible.builtin.shell: netstat -plnt
       register: netstat_result
     - ansible.builtin.debug: msg={{ netstat_result.stdout_lines }}
+
+```
+
+
