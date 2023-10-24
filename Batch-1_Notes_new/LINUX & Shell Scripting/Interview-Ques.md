@@ -1,4 +1,4 @@
-50 commonly asked Linux interview questions along with brief explanations:
+## 50 commonly asked Linux interview questions along with brief explanations:
 
 **Basic Linux Commands:**
 
