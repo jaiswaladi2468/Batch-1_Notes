@@ -1,3 +1,5 @@
+# Maven
+
 A Maven-based Java project typically follows a specific directory structure to help manage the project's source code, dependencies, and build lifecycle. Maven is a popular build automation and project management tool used in Java projects, but it can also be used for projects in other languages. Here's the common structure of a Maven-based project:
 
 ```
