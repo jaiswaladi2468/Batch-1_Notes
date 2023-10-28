@@ -78,6 +78,42 @@ Git is a distributed version control system used for tracking changes in source 
     
     This command doesn't exist directly in Git. You perform this action on the platform where your remote repository is hosted.
 
+11. **git users:**
+
+In Git, a "user" typically refers to someone who interacts with a Git repository. Each user can have their own Git configuration settings, including their name and email address.
+
+Here's how you can configure your Git user information:
+
+1. **Setting Your Name**:
+   To set your name, you can use the following command:
+
+   ```bash
+   git config --global user.name "Your Name"
+   ```
+
+   Replace "Your Name" with your actual name.
+
+2. **Setting Your Email**:
+   To set your email address, you can use the following command:
+
+   ```bash
+   git config --global user.email "your@example.com"
+   ```
+
+   Replace "your@example.com" with your actual email address.
+
+   It's important to note that this email address is associated with your commits. It's used for identification and, in some cases, for sending notifications or other correspondence related to your Git activities.
+
+3. **Checking Your Configuration**:
+   To verify that you've set your user information correctly, you can use:
+
+   ```bash
+   git config --global --get user.name
+   git config --global --get user.email
+   ```
+
+   These commands will display the configured name and email respectively.
+
 # Example Workflow:
 
 Let's walk through a simple workflow involving creating a new feature branch, making changes, and merging them back into the main branch.
