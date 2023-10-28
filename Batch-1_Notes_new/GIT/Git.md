@@ -194,14 +194,14 @@ Here, the merge commit records that you merged the `feature` branch into `main`.
 
 ### Using `git rebase`:
 
-1. Switch to the `feature` branch:
+1. Switch to the `main` branch:
    ```
-   git checkout feature
+   git checkout main
    ```
 
 2. Rebase the `feature` branch onto `main`:
    ```
-   git rebase main
+   git rebase feature
    ```
 
 In this case, the commit history would look something like this:
